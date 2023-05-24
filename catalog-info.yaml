@@ -1,0 +1,49 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: blues-man-blues-man-poi-map-app-dev
+  annotations:
+    argocd/app-name: blues-man-blues-man-poi-map-app-dev
+    backstage.io/kubernetes-id: blues-man-blues-man-poi-map-app-dev
+    backstage.io/kubernetes-namespace: blues-man
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=blues-man-blues-man-poi-map-app-dev'
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: Summit23Janus2/blues-man-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.summit23blues.6mbu.p1.openshiftapps.com/dev-pipelines/ns/blues-man/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.summit23blues.6mbu.p1.openshiftapps.com/k8s/ns/blues-man/deployments/blues-man-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.summit23blues.6mbu.p1.openshiftapps.com/#https://github.com/Summit23Janus2/blues-man-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://blues-man-poi-map-app-blues-man.apps.summit23blues.6mbu.p1.openshiftapps.com
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/blues-man"
+  system: workshop-system-blues-man
+  consumesApis:
+    - gateway-api-blues-man
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-blues-man
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/blues-man"
